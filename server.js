@@ -31,4 +31,40 @@ app.get('/movie', (req, res) => {
     movie.save()
         .then((result) => console.log(result))
         .catch((err) => console.log(err));
+
+    const movieMatrix = new Movie({
+        title: "The Matrix",
+        genre: "Sci-Fi",
+        releaseYear: 1999,
+        director: "The Wachowskis",
+        rating: 8.7
+    });
+
+    movieMatrix.save()
+        .then((result) => console.log(result))
+        .catch((err) => console.log(err));
+
+    const movieInterstellar = new Movie({
+        title: "Interstellar",
+        genre: "Sci-Fi",
+        releaseYear: 2014,
+        director: "Christopher Nolan",
+        rating: 8.6
+    });
+
+    movieInterstellar.save()
+        .then((result) => console.log(result))
+        .catch((err) => console.log(err));
+
+    const movieGodfather = new Movie({
+        title: "The Godfather",
+        genre: "Crime",
+        releaseYear: 1972,
+        director: "Francis Ford Coppola",
+        rating: 9.2
+    });
+
+    movieGodfather.save()
+        .then((result) => console.log(result))
+        .catch((err) => console.log(err));
 });
