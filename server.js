@@ -26,12 +26,26 @@ app.get('/add-movie', (req, res) => {
     res.render("add_movie.ejs");
 });
 
+app.get('/edit-movie/:id', (req, res) => {
+    const movieID = req.params.id
+    Movie.findById(movieID)
+        .then((result) => res.render("edit_movie.ejs", {movie: result}))
+        .catch((err) => {
+            console.log(err)
+        });
+});
+
 app.post('/', (req, res) => {
-
     console.log(req.body);
-    const movie = new Movie(req.body);
-
-    movie.save()
-        .then((result) => res.redirect("/"))
-        .catch((err) => console.log(err));
+    if (req.body._id) {
+        console.log("_id is provided");
+        Movie.findByIdAndUpdate(req.body._id, req.body, { new: true })
+            .then((result) => res.redirect("/"))
+            .catch((err) => console.log(err));
+    } else {
+        const movie = new Movie(req.body);
+        movie.save()
+            .then((result) => res.redirect("/"))
+            .catch((err) => console.log(err));
+    }
 });
