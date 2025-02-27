@@ -7,5 +7,15 @@
 </head>
 <body>
     <h2>Welcome to my Movie List!</h2>
+    <h3>Movies:</h3>
+    <% if (movies.length>0 ) { %>
+        <% movies.forEach(movie => { %>
+            <h3><%= movie.title%></h3>
+            <p><%= movie.genre%></p>
+            <p><%= movie.rating%></p>
+        <% }) %>
+    <% } else { %>
+        <p>There are no movies to display...</p>
+    <% } %>
 </body>
 </html>

@@ -14,8 +14,12 @@ mongoose.connect(URI)
 app.listen(3000);
 
 app.get('/', (req, res) => {
-
-    res.render("index");
+    Movie.find()
+        .then((result) => {console.log(result), res.render("index", {movies: result})
+        })
+        .catch((err) => {
+            console.log(err)
+        });
 });
 
 app.get('/movie', (req, res) => {
