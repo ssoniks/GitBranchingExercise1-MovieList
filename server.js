@@ -39,7 +39,7 @@ app.post('/', (req, res) => {
     console.log(req.body);
     if (req.body._id) {
         console.log("_id is provided");
-        Movie.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        Movie.findByIdAndUpdate(req.body._id)
             .then((result) => res.redirect("/"))
             .catch((err) => console.log(err));
     } else {
@@ -48,4 +48,13 @@ app.post('/', (req, res) => {
             .then((result) => res.redirect("/"))
             .catch((err) => console.log(err));
     }
+});
+
+app.get('/delete-movie/:id', (req, res) => {
+    const movieID = req.params.id;
+    
+    Movie.findByIdAndDelete(movieID)
+        .then((result) => res.redirect("/"))
+        .catch((err) => console.log(err));
+    
 });
