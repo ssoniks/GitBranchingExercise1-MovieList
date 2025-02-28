@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to my Movie List!</h1>
+        <a class="add-movie-link" href="/add-movie">Add movie</a>
+        
+        <div class="movie-list">
+            <% if (movies.length>0 ) { %>
+                <div class="card-container">
+                    <% movies.forEach(movie => { %>
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title"><%= movie.title %></h3>
+                                <p class="card-text">Genre: <%= movie.genre %></p>
+                                <p class="card-text">Rating: <%= movie.rating %></p>
+                                <p class="card-text">Director: <%= movie.director %></p>
+                                <p class="card-text">Release year: <%= movie.releaseYear %></p>
+                                <div class="card-actions">
+                                    <a href="/edit-movie/<%= movie._id %>" class="card-link edit-link">Edit</a>
+                                    <a href="/delete-movie/<%= movie._id %>" class="card-link delete-link">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                  </div>
+            <% } else { %>
+                <p>There are no movies to display...</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
