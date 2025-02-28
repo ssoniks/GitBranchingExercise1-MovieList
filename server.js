@@ -1,12 +1,14 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
-const Movie = require('./models/movie')
+const Movie = require('./models/movie');
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
 
 //database connection
-const URI = "mongodb+srv://leicho123:not_circumsized@movielist.qapw5.mongodb.net/?retryWrites=true&w=majority&appName=MovieList";
+const URI = process.env.MONGO_URI;
+
 mongoose.connect(URI)
     .then((result) => {console.log('connected to database'), app.listen(3000)})
     .catch((err) => console.log(err));
