@@ -40,7 +40,7 @@ app.post('/', (req, res) => {
     console.log(req.body);
     if (req.body._id) {
         console.log("_id is provided");
-        Movie.findByIdAndUpdate(req.body._id)
+        Movie.findByIdAndUpdate(req.body._id, req.body)
             .then((result) => res.redirect("/"))
             .catch((err) => console.log(err));
     } else {
