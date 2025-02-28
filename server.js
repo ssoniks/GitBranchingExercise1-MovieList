@@ -8,10 +8,11 @@ app.set('view engine', 'ejs');
 //database connection
 const URI = "mongodb+srv://leicho123:not_circumsized@movielist.qapw5.mongodb.net/?retryWrites=true&w=majority&appName=MovieList";
 mongoose.connect(URI)
-    .then((result) => {console.log('connected to database'), app.listen(3000);})
+    .then((result) => {console.log('connected to database'), app.listen(3000)})
     .catch((err) => console.log(err));
 
-app.use(express.urlencoded({ extended: true }))    
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     Movie.find()
