@@ -4,9 +4,6 @@ const connectDB = require("./config/database");
 
 const app = express();
 
-let hasRun = false;
-
-
 connectDB();
 
 // Middleware
